@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import moe.mokacchi.japanesedict.ui.screens.CameraScreen
-import moe.mokacchi.japanesedict.ui.screens.SearchScreen
+import moe.mokacchi.japanesedict.ui.screens.camera.CameraScreen
+import moe.mokacchi.japanesedict.ui.screens.search.SearchScreen
 
 @Composable
 fun Navigation() {
