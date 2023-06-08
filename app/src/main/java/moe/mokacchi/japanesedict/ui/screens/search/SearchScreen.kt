@@ -13,9 +13,10 @@ fun SearchScreen(
     viewModel: SearchViewModel = koinViewModel(),
     onNavigateToCameraScreen: () -> Unit
 ) {
-    AppSearchBar(modifier = Modifier
-        .fillMaxWidth()
-        .padding(8.dp),
+    AppSearchBar(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
         query = viewModel.searchInputValue,
         onQueryChange = { viewModel.updateSearchInput(it) },
         onCameraIconClick = onNavigateToCameraScreen
