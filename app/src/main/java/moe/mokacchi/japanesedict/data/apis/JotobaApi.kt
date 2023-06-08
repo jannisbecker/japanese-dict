@@ -5,7 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface JotobaApi {
-    @POST("/search/words")
+    @POST("search/words")
     suspend fun searchWords(@Body request: WordsRequest): WordsResponse
 
     @POST("/search/names")
@@ -16,7 +16,6 @@ interface JotobaApi {
 
     @POST("/search/sentences")
     suspend fun searchSentences(@Body request: SentencesRequest): SentencesResponse
-
 }
 
 data class WordsRequest(
@@ -81,7 +80,7 @@ data class Reading(
 
 data class Sense(
     val glosses: List<String>,
-    val pos: List<String>,
+    //val pos: List<String>,
     val language: String
 )
 
@@ -98,6 +97,7 @@ data class Kanji(
     val strokeCount: Int,
     val frequency: Int,
     val jlpt: Int,
+    val variant: List<String>,
     val onyomi: List<String>,
     val kunyomi: List<String>,
     val chinese: List<String>,
