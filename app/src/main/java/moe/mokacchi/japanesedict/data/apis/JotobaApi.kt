@@ -80,7 +80,7 @@ data class Reading(
 
 data class Sense(
     val glosses: List<String>,
-    //val pos: List<String>,
+    //val pos: Map<String, String>,
     val language: String
 )
 

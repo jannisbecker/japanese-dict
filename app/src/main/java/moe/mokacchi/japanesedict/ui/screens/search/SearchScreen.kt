@@ -9,8 +9,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.flow.forEach
 import moe.mokacchi.japanesedict.ui.components.AppSearchBar
+import moe.mokacchi.japanesedict.ui.components.RubyText
+import moe.mokacchi.japanesedict.ui.components.TextFragment
+import moe.mokacchi.japanesedict.ui.components.WordResultListItem
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -21,17 +23,31 @@ fun SearchScreen(
 
     val words by viewModel.wordsResult.collectAsState()
 
-    AppSearchBar(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
-        query = viewModel.searchInputValue,
-        onQueryChange = { viewModel.updateSearchInput(it) },
-        onCameraIconClick = onNavigateToCameraScreen
+    val textContent = listOf(
+        TextFragment(text = "このルールを"),
+        TextFragment(text = "守", furigana = "まも"),
+        TextFragment(text = "るらない"),
+        TextFragment(text = "人", furigana = "ひと"),
+        TextFragment(text = "は"),
+        TextFragment(text = "旅行", furigana = "りょこう"),
+        TextFragment(text = "ができなくなることもあります。"),
     )
+
     Column {
-        words.forEach { word ->
-            Text(text=word.reading.kanji+"")
+        AppSearchBar(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            query = viewModel.searchInputValue,
+            onQueryChange = { viewModel.updateSearchInput(it) },
+            onCameraIconClick = onNavigateToCameraScreen
+        )
+
+        words.forEach { 
+            WordResultListItem(wordResult = it)
         }
+
+        RubyText(textContent = textContent, showReadings = true)
     }
+
 }
